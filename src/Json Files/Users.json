@@ -1,0 +1,74 @@
+{
+  "users": {
+    "user1": {
+      "id": "1",
+      "name": "Ayush",
+      "email": "ayush25.kandari@gmail.com",
+      "password": "Ayush@123",
+      "role": "landlord"
+    },
+    "user2": {
+      "id": "2",
+      "name": "Ashutosh",
+      "email": "ashutosh21.user@gmail.com",
+      "password": "Ashutosh@123",
+      "role": "landlord"
+    },
+    "user3": {
+      "id": "3",
+      "name": "Aditya",
+      "email": "aditya78.owner@gmail.com",
+      "password": "Aditya@123",
+      "role": "landlord"
+    },
+    "user4": {
+      "id": "4",
+      "name": "Abhishek",
+      "email": "abhishek99.prop@gmail.com",
+      "password": "Abhishek@123",
+      "role": "landlord"
+    },
+    "user5": {
+      "id": "5",
+      "name": "Saurabh",
+      "email": "saurabh55.tenant@gmail.com",
+      "password": "Saurabh@123",
+      "role": "tenant"
+    },
+    "user6": {
+      "id": "6",
+      "name": "Suraj",
+      "email": "suraj88.renter@gmail.com",
+      "password": "Suraj@123",
+      "role": "tenant"
+    },
+    "user7": {
+      "id": "7",
+      "name": "Sandeep",
+      "email": "sandeep33.tenant@gmail.com",
+      "password": "Sandeep@123",
+      "role": "tenant"
+    },
+    "user8": {
+      "id": "8",
+      "name": "Mohit",
+      "email": "mohit47.tenant@gmail.com",
+      "password": "Mohit@123",
+      "role": "tenant"
+    },
+    "user9": {
+      "id": "9",
+      "name": "Vikrant",
+      "email": "vikrant62.rental@gmail.com",
+      "password": "Vikrant@123",
+      "role": "tenant"
+    },
+    "user10": {
+      "id": "10",
+      "name": "Amit",
+      "email": "amit14.tenant@gmail.com",
+      "password": "Amit@123",
+      "role": "tenant"
+    }
+  }
+}
