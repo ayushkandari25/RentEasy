@@ -5,6 +5,7 @@ import LandLordDashboard from "../Pages/Landlord/LandLordDashboard";
 import TenantDashboard from "../Pages/Tenant/TenantDashboard";
 import Home from "../components/Home";
 import Login from "../Pages/Login";
+import SignUp from "../Pages/SignUp";
 
 
 const AppRoutes = () => {
@@ -15,13 +16,14 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
 
       {user && user.role === "tenant" ? (
         <>
           <Route path="/tenant/dashboard" element={<TenantDashboard />} />
         </>
       ) : (
-          <Route path="/tenant/*" element={<Navigate to="/" />} />
+        <Route path="/tenant/*" element={<Navigate to="/" />} />
       )}
 
       {user && user.role === "landlord" ? (
@@ -29,7 +31,7 @@ const AppRoutes = () => {
           <Route path="/landlord/dashboard" element={<LandLordDashboard />} />
         </>
       ) : (
-          <Route path="/landlord/*" element={<Navigate to="/" />} />
+        <Route path="/landlord/*" element={<Navigate to="/" />} />
       )}
     </Routes>
   );
