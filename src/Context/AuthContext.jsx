@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
@@ -8,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axios.get(
-        "https://rent-easy-18566-default-rtdb.firebaseio.com/"
+        "https://rent-easy-18566-default-rtdb.firebaseio.com/users.json"
       );
       if (response.data) {
         const users = Object.values(response.data);

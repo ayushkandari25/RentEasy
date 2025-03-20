@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   return (
     <nav className="bg-[rgb(223,228,235)] shadow-md py-4 px-6 md:px-12 flex justify-between items-center">
-      {/* Logo */}
       <Link to="/">
         <img
           src="/NavbarLogo.jpg"
@@ -15,20 +16,33 @@ const Navbar = () => {
         />
       </Link>
 
-      {/* Buttons */}
       <div className="flex gap-4">
-        <button
-          onClick={() => navigate("/login")}
-          className="px-5 py-2 bg-blue-600 text-white rounded-lg text-sm md:text-base hover:bg-blue-700 transition duration-300"
-        >
-          Login
-        </button>
-        <button
-          onClick={() => navigate("/signup")}
-          className="px-5 py-2 bg-blue-600 text-white rounded-lg text-sm md:text-base hover:bg-blue-700 transition duration-300"
-        >
-          Sign Up
-        </button>
+        {user ? (
+          <button
+            className="bg-red-600 text-white px-6 py-2 rounded-lg text-sm md:text-base hover:bg-red-700 transition duration-300"
+            onClick={() => {
+              logout();
+              navigate("/login"); // Redirect to login page after logout
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <>
+            <button
+              onClick={() => navigate("/login")}
+              className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm md:text-base hover:bg-blue-700 transition duration-300"
+            >
+              Login
+            </button>
+            <button
+              className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm md:text-base hover:bg-blue-700 transition duration-300"
+              onClick={() => navigate("/signup")}
+            >
+              Sign Up
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );
