@@ -10,6 +10,8 @@ import TenantProfile from "../Pages/Tenant/TenantProfile";
 import TenantRequest from "../Pages/Tenant/TenantRequest";
 import LandLordProperties from "../Pages/Landlord/LandLordProperties";
 import LandLordRequest from "../Pages/Landlord/LandLordRequest";
+import TenantMessage from "../Pages/Tenant/TenantMessage";
+
 
 
 const AppRoutes = () => {
@@ -25,8 +27,9 @@ const AppRoutes = () => {
       {user && user.role === "tenant" ? (
         <>
           <Route path="/tenant/dashboard" element={<TenantDashboard />} />
-          <Route path="/tenant/profile" element={<TenantProfile />} />
+          <Route path="/tenant/profile/:id" element={<TenantProfile />} />
           <Route path="/tenant/request" element={<TenantRequest />} />
+          <Route path="/tenant/messages/:id" element={<TenantMessage />} />
         </>
       ) : (
         <Route path="/tenant/*" element={<Navigate to="/" />} />

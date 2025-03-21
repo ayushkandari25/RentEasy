@@ -44,8 +44,23 @@ const TenantDashboard = () => {
         <div className="bg-white p-6 rounded-lg shadow-md transition hover:shadow-lg">
           <h3 className="text-lg font-semibold text-gray-800">Messages</h3>
           <p className="text-gray-500">Communicate with your landlord.</p>
-          <button className="mt-4 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md">
+          <button
+            className="mt-4 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md"
+            onClick={() => navigate(`/tenant/messages/${user.id}`)}
+          >
             Open Chat
+          </button>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md transition hover:shadow-lg">
+          <h3 className="text-lg font-semibold text-gray-800">
+            Update your Profile
+          </h3>
+          <p className="text-gray-500">Update your credentials.</p>
+          <button
+            className="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md"
+            onClick={() => navigate(`/tenant/profile/${user.id}`)}
+          >
+            Update
           </button>
         </div>
       </div>
