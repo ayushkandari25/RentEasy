@@ -24,7 +24,6 @@
   <li>✅ <b>Rent Requests & Payments</b> - Landlords can generate rent requests, and tenants can pay their rent effortlessly.</li>
   <li>✅ <b>Property Purchase with Razorpay</b> - Buy properties directly using Razorpay, with real-time payment status updates.</li>
   <li>✅ <b>Role-Based Dashboard</b> - Separate dashboards for <b>tenants</b> and <b>landlords</b> for a better user experience.</li>
-  <li>✅ <b>Dark Mode Support</b> - Toggle between <b>light and dark themes</b> for a personalized UI experience.</li>
 </ul>
 
 <hr>
