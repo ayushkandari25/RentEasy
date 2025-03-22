@@ -32,23 +32,25 @@
 
 <h3>🏠 Home Page</h3>
 <p>Welcome to <b>RentEasy!</b> Sign up for an account or log in to manage properties, rent payments, and communication.</p>
-![Home](https://github.com/user-attachments/assets/e44693e8-8789-469f-861f-0f8c133a22ce)
+<img src="https://github.com/user-attachments/assets/e44693e8-8789-469f-861f-0f8c133a22ce">
+
 
 
 <h3>💳 Rent Payments & Requests</h3>
 <p>View and manage all rent transactions effortlessly.</p>
-![Payment](https://github.com/user-attachments/assets/bf7dedd9-7790-4e57-8768-ffbc4c83b869)
+<img src="https://github.com/user-attachments/assets/bf7dedd9-7790-4e57-8768-ffbc4c83b869">
+
 
 
 <h3>🏡 Available Properties</h3>
 <p>Browse and purchase properties instantly using Razorpay.</p>
-![LandLord](https://github.com/user-attachments/assets/c06fd51b-3ac0-494f-84c6-a0d2aab72a7b)
+<img src="https://github.com/user-attachments/assets/c06fd51b-3ac0-494f-84c6-a0d2aab72a7b">
+
 
 
 <h3>Razor Pay</h3>
 <p>Pay Rents usign Razorpay.</p>
 <img src="https://github.com/user-attachments/assets/3c43c5da-cfc6-4f64-a941-f3fb0fbe95ad">
-![RazorPay](https://github.com/user-attachments/assets/3c43c5da-cfc6-4f64-a941-f3fb0fbe95ad)
 
 <hr>
 
