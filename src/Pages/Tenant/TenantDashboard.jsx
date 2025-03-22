@@ -37,10 +37,11 @@ const TenantDashboard = () => {
 
         <div className="bg-white p-6 rounded-lg shadow-md transition hover:shadow-lg">
           <h3 className="text-lg font-semibold text-gray-800">Rent Payments</h3>
-          <p className="text-gray-500">
-            Your next rent is due on: <b className="text-red-600">15th March</b>
-          </p>
-          <button className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md" onClick={handelPayment}>
+          <p className="text-gray-500">Pay you Rent in a Single Tap</p>
+          <button
+            className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+            onClick={handelPayment}
+          >
             View Payments
           </button>
         </div>
@@ -65,6 +66,18 @@ const TenantDashboard = () => {
             onClick={() => navigate(`/tenant/profile/${user.id}`)}
           >
             Update
+          </button>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md transition hover:shadow-lg">
+          <h3 className="text-lg font-semibold text-gray-800">
+            Available Properties
+          </h3>
+          <p className="text-gray-500">Want to Upgrade OR Adjust?</p>
+          <button
+            className="mt-4 bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md"
+            onClick={() => navigate("/tenant/properties")}
+          >
+            Click Here
           </button>
         </div>
       </div>

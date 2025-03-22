@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const TenantRent = () => {
-  const { tenantId } = useParams(); // Get tenant ID from URL params
+  const { tenantId } = useParams();
   const [rentRequests, setRentRequests] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (tenantId) {
@@ -18,12 +19,11 @@ const TenantRent = () => {
         "https://rent-easy-18566-default-rtdb.firebaseio.com/rentRequests.json"
       );
       if (response.data) {
-        const rentArray = Object.keys(response.data).map((key) => ({
-          id: key,
-          ...response.data[key],
+        const rentArray = Object.entries(response.data).map(([id, req]) => ({
+          id,
+          ...req,
         }));
 
-        // Filter only the logged-in tenant's pending rent requests
         setRentRequests(
           rentArray.filter(
             (req) => req.status === "pending" && req.tenantId === tenantId
@@ -63,7 +63,7 @@ const TenantRent = () => {
     try {
       await axios.patch(
         `https://rent-easy-18566-default-rtdb.firebaseio.com/rentRequests/${id}.json`,
-        { status: "paid" }
+        { status: "paid", paymentDate: new Date().toISOString().split("T")[0] }
       );
       setRentRequests(rentRequests.filter((req) => req.id !== id));
     } catch (error) {
@@ -77,27 +77,34 @@ const TenantRent = () => {
       {rentRequests.length === 0 ? (
         <p className="text-gray-600">No pending rent requests.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {rentRequests.map((request) => (
-            <div
-              key={request.id}
-              className="bg-white p-6 rounded-lg shadow-md transition hover:shadow-lg"
-            >
-              <h3 className="text-lg font-semibold text-gray-800">
-                {request.tenantName}
-              </h3>
-              <p className="text-gray-500">Amount: ₹{request.amount}</p>
-              <p className="text-gray-500">Due Date: {request.dueDate}</p>
-              <p className="text-red-600 font-bold">Status: {request.status}</p>
-              <button
-                className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
-                onClick={() => handlePayment(request)}
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {rentRequests.map((request) => (
+              <div
+                key={request.id}
+                className="bg-white p-6 rounded-lg shadow-md transition hover:shadow-lg"
               >
-                Pay Now
-              </button>
-            </div>
-          ))}
-        </div>
+                <h3 className="text-lg font-semibold text-gray-800">
+                  {request.tenantName}
+                </h3>
+                <p className="text-gray-500">Amount: ₹{request.amount}</p>
+                <p className="text-gray-500">Due Date: {request.dueDate}</p>
+                <button
+                  className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+                  onClick={() => handlePayment(request)}
+                >
+                  Pay Now
+                </button>
+              </div>
+            ))}
+          </div>
+          <button
+            onClick={() => navigate("/tenant/dashboard")}
+            className="bg-red-500 text-white px-4 py-2 mt-4 ml-5"
+          >
+            Go Back Home
+          </button>
+        </>
       )}
     </div>
   );

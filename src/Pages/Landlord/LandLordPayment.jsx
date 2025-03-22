@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const USERS_API_URL =
   "https://rent-easy-18566-default-rtdb.firebaseio.com/users.json";
@@ -9,8 +10,8 @@ const RENT_REQUEST_URL =
 const LandLordPayment = () => {
   const [tenants, setTenants] = useState([]);
   const [rentRequests, setRentRequests] = useState({});
+  const navigate = useNavigate();
 
-  // Fetch tenants and rent requests
   useEffect(() => {
     axios
       .get(USERS_API_URL)
@@ -35,28 +36,37 @@ const LandLordPayment = () => {
       .catch((err) => console.error("Error fetching rent requests:", err));
   }, []);
 
-  // Function to create a new rent request for all tenants
   const handleCreateRentRequests = () => {
-    tenants.forEach((tenant) => {
-      if (!rentRequests[tenant.id]) {
-        const newRequest = {
-          tenantId: tenant.id,
-          tenantName: tenant.name,
-          amount: "5000", // Default amount
-          dueDate: new Date().toISOString().split("T")[0], // Today's date
-          status: "pending",
-        };
+    const updates = tenants.map((tenant) => {
+      const existingRequest = rentRequests[tenant.id];
 
-        axios
-          .patch(
-            `https://rent-easy-18566-default-rtdb.firebaseio.com/rentRequests/${tenant.id}.json`,
-            newRequest
-          )
-          .then(() => {
-            setRentRequests((prev) => ({ ...prev, [tenant.id]: newRequest }));
-          })
-          .catch((err) => console.error("Error creating rent request:", err));
-      }
+      const newRequest = {
+        tenantId: tenant.id,
+        tenantName: tenant.name,
+        amount: "5000",
+        dueDate: new Date().toISOString().split("T")[0],
+        status: "pending",
+      };
+
+      return axios
+        .patch(
+          `https://rent-easy-18566-default-rtdb.firebaseio.com/rentRequests/${tenant.id}.json`,
+          newRequest
+        )
+        .then(() => ({
+          [tenant.id]: newRequest,
+        }))
+        .catch((err) =>
+          console.error(`Error updating rent request for ${tenant.name}:`, err)
+        );
+    });
+
+    Promise.all(updates).then((updatedRequests) => {
+      const updatedRentRequests = updatedRequests.reduce(
+        (acc, curr) => ({ ...acc, ...curr }),
+        {}
+      );
+      setRentRequests((prev) => ({ ...prev, ...updatedRentRequests }));
     });
   };
 
@@ -69,6 +79,12 @@ const LandLordPayment = () => {
         className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md mb-4"
       >
         Create Rent Requests
+      </button>
+      <button
+        className="mb-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md ml-4"
+        onClick={() => navigate("/landlord/dashboard")}
+      >
+        Go Back Home
       </button>
 
       {tenants.length === 0 ? (
@@ -110,7 +126,7 @@ const TenantCard = ({ tenant, rentRequest }) => {
           </p>
         ) : (
           <p className="text-gray-500">
-            Click "Create Rent Requests" For this month Rent Request.
+            Click "Create Rent Requests" to generate a request.
           </p>
         )}
       </div>

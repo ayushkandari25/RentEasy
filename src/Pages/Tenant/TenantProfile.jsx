@@ -91,6 +91,12 @@ const TenantProfile = () => {
       >
         Update Profile
       </button>
+      <button
+        onClick={() => navigate("/tenant/dashboard")}
+        className="bg-red-500 text-white px-4 py-2 mt-4 ml-5"
+      >
+        Go Back Home
+      </button>
     </div>
   );
 };

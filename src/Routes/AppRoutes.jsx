@@ -11,8 +11,9 @@ import TenantRequest from "../Pages/Tenant/TenantRequest";
 import LandLordProperties from "../Pages/Landlord/LandLordProperties";
 import LandLordRequest from "../Pages/Landlord/LandLordRequest";
 import TenantMessage from "../Pages/Tenant/TenantMessage";
-import LandLordPayment from "../Pages/Landlord/LandLordPayent";
+import LandLordPayment from "../Pages/Landlord/LandLordPayment";
 import TenantRent from "../Pages/Tenant/TenantRent";
+import AvailableProperties from "../Pages/Tenant/AvailableProperties";
 
 
 
@@ -33,6 +34,7 @@ const AppRoutes = () => {
           <Route path="/tenant/request" element={<TenantRequest />} />
           <Route path="/tenant/messages/:id" element={<TenantMessage />} />
           <Route path="/tenant/payment/:tenantId" element={<TenantRent />} />
+          <Route path="/tenant/properties" element={<AvailableProperties />} />
         </>
       ) : (
         <Route path="/tenant/*" element={<Navigate to="/" />} />

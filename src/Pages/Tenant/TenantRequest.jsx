@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
 
 const TenantRequest = () => {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext); 
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     priority: "",
     image: "",
+    tenantName: user?.name || "Anonymous", 
   });
 
   const handleChange = (e) => {
@@ -32,6 +36,7 @@ const TenantRequest = () => {
       alert("Please select a priority level.");
       return;
     }
+
     try {
       await axios.post(
         "https://rent-easy-18566-default-rtdb.firebaseio.com/requests.json",
@@ -96,9 +101,18 @@ const TenantRequest = () => {
         >
           Submit Request
         </button>
+
+        <button
+          type="submit"
+          className="bg-red-500 text-white px-4 py-2 mt-4 w-full"
+          onClick={() => navigate("/tenant/dashboard")}
+        >
+          Go Back Home
+        </button>
       </form>
     </div>
   );
 };
 
 export default TenantRequest;
+
