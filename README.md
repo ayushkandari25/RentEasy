@@ -47,6 +47,7 @@
 
 <h3>Razor Pay</h3>
 <p>Pay Rents usign Razorpay.</p>
+<img src="https://github.com/user-attachments/assets/3c43c5da-cfc6-4f64-a941-f3fb0fbe95ad">
 ![RazorPay](https://github.com/user-attachments/assets/3c43c5da-cfc6-4f64-a941-f3fb0fbe95ad)
 
 <hr>
