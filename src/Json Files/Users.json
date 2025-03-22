@@ -7,27 +7,6 @@
       "password": "Ayush@123",
       "role": "landlord"
     },
-    "user2": {
-      "id": "2",
-      "name": "Ashutosh",
-      "email": "ashutosh21.user@gmail.com",
-      "password": "Ashutosh@123",
-      "role": "landlord"
-    },
-    "user3": {
-      "id": "3",
-      "name": "Aditya",
-      "email": "aditya78.owner@gmail.com",
-      "password": "Aditya@123",
-      "role": "landlord"
-    },
-    "user4": {
-      "id": "4",
-      "name": "Abhishek",
-      "email": "abhishek99.prop@gmail.com",
-      "password": "Abhishek@123",
-      "role": "landlord"
-    },
     "user5": {
       "id": "5",
       "name": "Saurabh",

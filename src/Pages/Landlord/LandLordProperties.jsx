@@ -7,6 +7,3 @@ const LandLordProperties = () => {
 }
 
 export default LandLordProperties
-
-
-//  manage their rental properties.

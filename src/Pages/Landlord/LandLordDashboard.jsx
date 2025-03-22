@@ -7,6 +7,9 @@ const LandlordDashboard = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const handelPayment=()=>{
+    navigate("/landlord/payment");
+  }
   return (
     <div className="min-h-screen p-6 bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-md mb-6 text-center">
@@ -55,7 +58,10 @@ const LandlordDashboard = () => {
             Payment Tracking
           </h3>
           <p className="text-gray-500 mt-2">Monitor rent collection status.</p>
-          <button className="mt-4 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md">
+          <button
+            className="mt-4 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md"
+            onClick={handelPayment}
+          >
             View Payments
           </button>
         </div>

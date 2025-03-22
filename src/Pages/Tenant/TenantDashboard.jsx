@@ -6,6 +6,10 @@ const TenantDashboard = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const handelPayment=()=>{
+    navigate(`/tenant/payment/${user.id}`);
+  }
+
   return (
     <div className="min-h-screen p-6 bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-md mb-6">
@@ -36,7 +40,7 @@ const TenantDashboard = () => {
           <p className="text-gray-500">
             Your next rent is due on: <b className="text-red-600">15th March</b>
           </p>
-          <button className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md">
+          <button className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md" onClick={handelPayment}>
             View Payments
           </button>
         </div>
